@@ -33,34 +33,71 @@ export class AppComponent {
       {
         stops: [
           {
-            title: 'Welcome to NgxTourGuide',
+            title: 'Bienvenido a la guía de usuario NU Bank',
             content:
-              'This is a little utility to enable interactive tours in angular projects',
+              'Aquí te guiaremos a través de las principales funciones de la aplicación NU Bank.',
           },
           {
             element: '.restart',
-            title: 'Restart',
-            content: 'You can restart the demo tour here',
+            title: 'Punto de reinicio',
+            content: 'Aquí puedes reiniciar el tour en cualquier momento.',
           },
           {
             element: '#setupImport',
-            title: 'Import ngxTourGuide',
+            title: 'Pantalla de inicio de sesión',
             useHtml: true,
-            content: `You need to import the Module in your root to make the service available for any Module.<br>
-              This module uses @angular/animations so import NoopAnimationsModule or BrowserAnimationsModule accordingly.<br>
-              <em>Make sure to call forRoot</em>.`,
+            content: `Este es el inicio de nuestro recorrido, la aplicación Nu Bank permite a los usuarios ingresar de dos maneras, <br> "Entrar en mi cuenta", "Con tu cédula y código de acceso"<br>`,
           },
           {
             element: '#setupOverlay',
-            title: 'Add the UI',
+            title: 'Inicio de Sesión',
+            useHtml: true,
             content:
-              'To visualize and orchestrate the tour add TourGuideComponent to your app.',
+              'En esta oportunidad, seleccionamos "Entrar en mi cuenta" para acceder a la aplicación, <br> ingresando posteriormente nuestro correo electrónico y contraseña.',
           },
           {
             element: '#setupStart',
-            title: 'Start',
-            content: 'Start a tour with the injected TourGuideService.',
+            title: 'Menú principal',
+            useHtml: true,
+            content: 'Si el ingreso es exitoso, accederemos al menú principal de la aplicación, <br> en el cual podremos visualizar las diferentes opciones que Nu Bank nos ofrece.',
           },
+
+
+
+          {
+            element: '#setupImport2',
+            title: 'Flujo depositar',
+            useHtml: true,
+            content: `¡Vamos a explorar "depositar"!, <br> en esta sección aprenderemos a cómo enviar dinero`,
+          },
+          {
+            element: '#setupOverlay2',
+            title: 'Opciones de depósito',
+            useHtml: true,
+            content:
+              'Vemos dos maneras de depositar dinero: "Usando PSE" y "En efectivo". <br> Seleccionamos "Usando PSE" para continuar con el proceso de depósito.',
+          },
+          {
+            element: '#setupStart2',
+            title: 'Menú principal',
+            useHtml: true,
+            content: 'Si el ingreso es exitoso, accederemos al menú principal de la aplicación, <br> en el cual podremos visualizar las diferentes opciones que Nu Bank nos ofrece.',
+          },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           {
             element: '#registerTour',
             title: 'Register a tour',
@@ -69,6 +106,7 @@ export class AppComponent {
           },
           {
             element: '#registerStart',
+            useHtml: true,
             title: 'Start a registered Tour',
             content:
               'You can start a registered tour from anywhere. Make sure to prepare your appstate accordingly (e.g. opening the respective page)',

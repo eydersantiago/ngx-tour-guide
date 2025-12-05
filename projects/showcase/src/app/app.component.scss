@@ -34,7 +34,8 @@ nav {
   overflow: visible;
   position: relative;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap;   // ok, pero ahora con gap
+  gap: 2rem;         // 👈 separación entre bloques
 
   &:after {
     background-color: transparent;
@@ -49,4 +50,19 @@ nav {
     left: 50%;
     transform: translateX(-50%);
   }
+
+  .manual-step {
+    flex: 1 1 412px; // 👈 cada bloque ocupa al menos el ancho de la imagen
+    max-width: 450px;
+
+    img {
+      width: 100%;   // se ajusta al bloque
+      height: auto; 
+      display: block;
+    }
+  }
 }
+
+
+
+
