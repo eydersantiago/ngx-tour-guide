@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build showcase",
+    "build": "npm run build:lib && ng build showcase",
     "build:lib": "ng build ngx-tour-guide && npm run copy:readme",
     "watch": "ng build showcase --watch --configuration development",
     "deploy:pages": "ng deploy --base-href=/ngx-tour-guide/",
