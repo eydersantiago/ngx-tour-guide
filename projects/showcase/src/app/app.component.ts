@@ -9,9 +9,12 @@ import { CustomizeStopsComponent } from './showcases/customize-stops/customize-s
 import { HtmlContentComponent } from './showcases/html-content/html-content.component';
 import { RegisterComponent } from './showcases/register/register.component';
 import { SetupComponent } from './showcases/setup/setup.component';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   imports: [
+    CommonModule,
     NgxTourGuideComponent,
     SetupComponent,
     RegisterComponent,
@@ -26,9 +29,33 @@ import { SetupComponent } from './showcases/setup/setup.component';
   standalone: true,
 })
 export class AppComponent {
-  title = 'showcase';
+  // 🔹 Título del manual
+  title = 'Manual de usuario NU Bank';
+
+  // 🔹 Sidebar del manual
+  sections = [
+    { id: 'portada', label: 'Portada' },
+    { id: 'indice', label: 'Índice' },
+    { id: 'introduccion', label: 'Introducción' },
+    { id: 'requisitos', label: 'Requisitos del sistema' },
+    { id: 'instalacion', label: 'Instalación / acceso' },
+    { id: 'interfaz', label: 'Descripción de la interfaz' },
+    { id: 'funciones', label: 'Funciones y características' },
+    { id: 'faq', label: 'Solución de problemas / FAQ' },
+    { id: 'mantenimiento', label: 'Mantenimiento y actualizaciones' },
+    { id: 'soporte', label: 'Soporte técnico' },
+    { id: 'glosario', label: 'Glosario' },
+    { id: 'apendices', label: 'Apéndices' },
+  ];
+
+  // 🔹 Sección inicial: Portada
+  currentSection = 'portada';
+
+  // 🔹 Fecha para mostrar en portada
+  today = new Date();
 
   constructor(public tourGuideService: NgxTourGuideService) {
+    // ⬇️ Tu registro original del tour, sin tocar
     tourGuideService.register(
       {
         stops: [
@@ -59,10 +86,9 @@ export class AppComponent {
             element: '#setupStart',
             title: 'Menú principal',
             useHtml: true,
-            content: 'Si el ingreso es exitoso, accederemos al menú principal de la aplicación, <br> en el cual podremos visualizar las diferentes opciones que Nu Bank nos ofrece.',
+            content:
+              'Si el ingreso es exitoso, accederemos al menú principal de la aplicación, <br> en el cual podremos visualizar las diferentes opciones que Nu Bank nos ofrece.',
           },
-
-
 
           {
             element: '#setupImport2',
@@ -81,22 +107,9 @@ export class AppComponent {
             element: '#setupStart2',
             title: 'Menú principal',
             useHtml: true,
-            content: 'Si el ingreso es exitoso, accederemos al menú principal de la aplicación, <br> en el cual podremos visualizar las diferentes opciones que Nu Bank nos ofrece.',
+            content:
+              'Si el ingreso es exitoso, accederemos al menú principal de la aplicación, <br> en el cual podremos visualizar las diferentes opciones que Nu Bank nos ofrece.',
           },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
           {
             element: '#registerTour',
@@ -196,10 +209,22 @@ export class AppComponent {
       'demo'
     );
 
-    this.startTour();
+    // ❌ Antes lo llamabas aquí:
+    // this.startTour();
+    // ✅ Ahora NO lo llamamos, para que el tour solo se inicie desde el botón.
   }
 
+  // Cambiar de sección en el sidebar
+  goToSection(id: string) {
+    this.currentSection = id;
+    // Opcional:
+    // window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // Iniciar tour desde la sección "Funciones y características"
   public startTour() {
+    // Nos aseguramos de que la sección de funciones esté visible
+    this.currentSection = 'funciones';
     this.tourGuideService.start('demo');
   }
 }
