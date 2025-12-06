@@ -307,12 +307,20 @@ nav {
 .sidebar-toggle {
   border: none;
   cursor: pointer;
-  background: rgba(117, 214, 226, 0.85);
+  background: #fff;                 /* Blanco por defecto */
   color: #000;
   padding: 0.4rem 1.1rem;
   border-radius: 999px;
   font-size: 1.1rem;
   font-weight: 600;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Cuando pase el mouse, enfoque o le pongas una clase extra */
+.sidebar-toggle:hover,
+.sidebar-toggle:focus,
+.sidebar-toggle.is-active {
+  background: rgba(117, 214, 226, 0.85);  /* El color que tenías */
 }
 
 /* Botón de abrir menú */
@@ -321,20 +329,6 @@ nav {
   top: 0.75rem;
   left: 0.75rem;
   z-index: 50;
-
-  position: fixed;
-  /* para el pseudo-elemento */
-  position: fixed;
-  /* importante para el ::after */
-  position: fixed;
-  /* y que sea referencia de posicionamiento */
-  position: fixed;
-  /* (la clave es que tenga position distinto de static) */
-  position: fixed;
-
-  /* Dejamos claro que sirva de referencia para ::after */
-  /* (ya con fixed lo es, pero lo remarco) */
-  // nada más aquí, el efecto va en ::after
 }
 
 
