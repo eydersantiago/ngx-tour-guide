@@ -54,6 +54,9 @@ export class AppComponent {
   // 🔹 Fecha para mostrar en portada
   today = new Date();
 
+  // 🔹 Estado del sidebar
+  sidebarOpen = true;
+
   constructor(public tourGuideService: NgxTourGuideService) {
     // ⬇️ Tu registro original del tour, sin tocar
     tourGuideService.register(
@@ -221,10 +224,16 @@ export class AppComponent {
     // window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  // 🔹 Abrir / cerrar sidebar
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
+
   // Iniciar tour desde la sección "Funciones y características"
   public startTour() {
     // Nos aseguramos de que la sección de funciones esté visible
     this.currentSection = 'funciones';
+    this.sidebarOpen = true;
     this.tourGuideService.start('demo');
   }
 }
