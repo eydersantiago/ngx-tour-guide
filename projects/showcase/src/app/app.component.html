@@ -1,43 +1,243 @@
-<nav>
-  <h1>Manual de usuario NU Bank</h1>
-  <button class="ngx-tourguide--button restart" (click)="startTour()">
-    Empecemos el tour de guía
+<div class="layout">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2>{{ title }}</h2>
+
+    <ul>
+      <li
+        *ngFor="let section of sections"
+        [class.active]="section.id === currentSection"
+      >
+        <button type="button" (click)="goToSection(section.id)">
+          {{ section.label }}
+        </button>
+      </li>
+    </ul>
+  </aside>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <section class="content">
+    <ng-container [ngSwitch]="currentSection">
+      <!-- PORTADA -->
+      <div *ngSwitchCase="'portada'" class="section portada">
+        <h1>Manual de usuario NU Bank</h1>
+        <p class="subtitle">
+          Versión 1.0 · {{ today | date: 'dd/MM/yyyy' }}
+        </p>
+        <p>
+          Este manual guía al usuario paso a paso para aprender a usar la
+          aplicación NU Bank, desde el inicio de sesión hasta el cierre de los
+          procesos principales.
+        </p>
+        <p class="hint">
+          Usa el menú de la izquierda para navegar por cada sección del manual.
+        </p>
+      </div>
+
+      <!-- ÍNDICE -->
+      <div *ngSwitchCase="'indice'" class="section">
+        <h1>Índice</h1>
+        <ol>
+          <li *ngFor="let s of sections; index as i">
+            <a (click)="goToSection(s.id)">{{ i + 1 }}. {{ s.label }}</a>
+          </li>
+        </ol>
+      </div>
+
+      <!-- INTRODUCCIÓN -->
+      <div *ngSwitchCase="'introduccion'" class="section">
+        <h1>Introducción</h1>
+
+        <h2>¿Qué es la app?</h2>
+        <p>
+          Aquí describes brevemente la aplicación: qué permite hacer, a qué
+          tipo de usuario está dirigida y cuáles son sus módulos principales.
+        </p>
+
+        <h2>Objetivo del manual</h2>
+        <p>
+          Explicar, de forma guiada, cómo utilizar la aplicación NU Bank de
+          manera segura y eficiente.
+        </p>
+
+        <h2>¿A quién va dirigido?</h2>
+        <p>
+          Usuarios nuevos y recurrentes que necesiten entender las funciones
+          básicas de la aplicación.
+        </p>
+
+        <h2>Alcance</h2>
+        <p>
+          Este manual cubre las funciones principales del usuario final
+          (inicio de sesión, navegación por el menú principal, flujo de
+          depósitos, etc.).
+        </p>
+      </div>
+
+      <!-- REQUISITOS DEL SISTEMA -->
+      <div *ngSwitchCase="'requisitos'" class="section">
+        <h1>Requisitos del sistema</h1>
+        <ul>
+          <li>Navegador compatible (Chrome, Edge, Firefox, etc.).</li>
+          <li>Conexión a internet estable.</li>
+          <li>Cuenta de usuario activa en NU Bank.</li>
+          <li>
+            Rol adecuado asignado (p. ej. Cliente) según las funciones que se
+            deseen utilizar.
+          </li>
+        </ul>
+      </div>
+
+      <!-- INSTALACIÓN / ACCESO -->
+      <div *ngSwitchCase="'instalacion'" class="section">
+        <h1>Instalación / acceso</h1>
+        <ol>
+          <li>Abra su navegador y diríjase a la URL oficial de la aplicación.</li>
+          <li>Ingrese su correo electrónico y contraseña registrados.</li>
+          <li>
+            Si olvidó su contraseña, use la opción de recuperación y siga los
+            pasos indicados.
+          </li>
+          <li>
+            Si es usuario nuevo, complete el proceso de registro según las
+            instrucciones de la aplicación.
+          </li>
+        </ol>
+      </div>
+
+      <!-- DESCRIPCIÓN DE LA INTERFAZ -->
+      <div *ngSwitchCase="'interfaz'" class="section">
+        <h1>Descripción de la interfaz</h1>
+        <p>
+          Aquí puedes describir el dashboard, los menús, las tarjetas de
+          información y cualquier otro elemento visual importante.
+        </p>
+        <p>
+          Más adelante puedes reemplazar este texto por capturas de pantalla
+          con anotaciones.
+        </p>
+      </div>
+
+      <!-- FUNCIONES Y CARACTERÍSTICAS (TU CONTENIDO ORIGINAL) -->
+      <div *ngSwitchCase="'funciones'" class="section">
+        <!-- ⚠️ Aquí va EXACTAMENTE lo que tenías antes -->
+        <nav>
+          <h1>Manual de usuario NU Bank</h1>
+          <button class="ngx-tourguide--button restart" (click)="startTour()">
+            Empecemos el tour de guía
+          </button>
+        </nav>
+
+        <main>
+          <showcase-setup class="section"></showcase-setup>
+          <showcase-register class="section"></showcase-register>
+          <showcase-html-content class="section"></showcase-html-content>
+          <showcase-customize-actions class="section"></showcase-customize-actions>
+          <showcase-customize-stops class="section"></showcase-customize-stops>
+        </main>
+      </div>
+
+      <!-- FAQ -->
+      <div *ngSwitchCase="'faq'" class="section">
+        <h1>Solución de problemas / FAQ</h1>
+        <ul>
+          <li>
+            <strong>No puedo iniciar sesión:</strong> verifica tus credenciales
+            o usa la opción de recuperación de contraseña.
+          </li>
+          <li>
+            <strong>No veo mis movimientos:</strong> revisa los filtros de fecha
+            o recarga la página.
+          </li>
+          <li>
+            <strong>El tour no se muestra:</strong> asegúrate de estar en la
+            sección “Funciones y características” y haz clic en el botón
+            “Empecemos el tour de guía”.
+          </li>
+        </ul>
+      </div>
+
+      <!-- MANTENIMIENTO -->
+      <div *ngSwitchCase="'mantenimiento'" class="section">
+        <h1>Mantenimiento y actualizaciones</h1>
+        <p>
+          Las actualizaciones de la aplicación NU Bank se realizan de forma
+          centralizada. Normalmente el usuario no necesita realizar ninguna
+          acción adicional, salvo recargar la página después de una actualización.
+        </p>
+      </div>
+
+      <!-- SOPORTE -->
+      <div *ngSwitchCase="'soporte'" class="section">
+        <h1>Soporte técnico</h1>
+        <p>Para soporte técnico, comuníquese a:</p>
+        <ul>
+          <li>Correo: soporte&#64;nubank-ui.com</li>
+          <li>Teléfono: +57 1 234 5678</li>
+          <li>Horario: Lunes a viernes, 8:00 a.m. a 6:00 p.m.</li>
+        </ul>
+      </div>
+
+      <!-- GLOSARIO -->
+      <div *ngSwitchCase="'glosario'" class="section">
+        <h1>Glosario</h1>
+        <dl>
+          <dt>Dashboard</dt>
+          <dd>
+            Pantalla principal que muestra el resumen de la información de la cuenta.
+          </dd>
+          <dt>Tour guiado</dt>
+          <dd>
+            Recorrido interactivo que resalta elementos de la interfaz y explica su uso.
+          </dd>
+        </dl>
+      </div>
+
+      <!-- APÉNDICES -->
+      <div *ngSwitchCase="'apendices'" class="section">
+        <h1>Apéndices</h1>
+        <p>
+          Aquí puedes incluir procesos avanzados, configuraciones adicionales
+          o información complementaria para usuarios expertos.
+        </p>
+      </div>
+
+      <!-- FALLBACK -->
+      <div *ngSwitchDefault class="section">
+        <p>Selecciona una sección en el menú de la izquierda.</p>
+      </div>
+    </ng-container>
+  </section>
+</div>
+
+<!-- Componente del tour (lo dejamos fuera para que siempre esté disponible) -->
+<shipbit-ngx-tour-guide>
+  <button
+    class="ngx-tourguide--button"
+    ngxTourGuidePreviousContent
+    (click)="tourGuideService.executeAction('previousStop')"
+  >
+    <span class="material-icons md-18">arrow_back</span>
   </button>
-</nav>
-<main>
-  <showcase-setup class="section"></showcase-setup>
-  <showcase-register class="section"></showcase-register>
-  <showcase-html-content class="section"></showcase-html-content>
-  <showcase-customize-actions class="section"></showcase-customize-actions>
-  <showcase-customize-stops class="section"></showcase-customize-stops>
-  <shipbit-ngx-tour-guide>
-    <button
-      class="ngx-tourguide--button"
-      ngxTourGuidePreviousContent
-      (click)="tourGuideService.executeAction('previousStop')"
-    >
-      <span class="material-icons md-18">arrow_back</span>
-    </button>
-    <button
-      class="ngx-tourguide--button"
-      ngxTourGuideNextContent
-      (click)="tourGuideService.executeAction('nextStop')"
-    >
-      <span class="material-icons md-18">arrow_forward</span>
-    </button>
-    <button
-      class="ngx-tourguide--button"
-      ngxTourGuideFinishContent
-      (click)="tourGuideService.executeAction('finishTour')"
-    >
-      <span class="material-icons md-18">check</span>
-    </button>
-    <button
-      class="ngx-tourguide--button"
-      ngxTourGuideSkipContent
-      (click)="tourGuideService.executeAction('skipTour')"
-    >
-      <span class="material-icons md-18">close</span>
-    </button>
-  </shipbit-ngx-tour-guide>
-</main>
+  <button
+    class="ngx-tourguide--button"
+    ngxTourGuideNextContent
+    (click)="tourGuideService.executeAction('nextStop')"
+  >
+    <span class="material-icons md-18">arrow_forward</span>
+  </button>
+  <button
+    class="ngx-tourguide--button"
+    ngxTourGuideFinishContent
+    (click)="tourGuideService.executeAction('finishTour')"
+  >
+    <span class="material-icons md-18">check</span>
+  </button>
+  <button
+    class="ngx-tourguide--button"
+    ngxTourGuideSkipContent
+    (click)="tourGuideService.executeAction('skipTour')"
+  >
+    <span class="material-icons md-18">close</span>
+  </button>
+</shipbit-ngx-tour-guide>
