@@ -1,8 +1,19 @@
-<div class="layout">
+<div class="layout" [class.sidebar-closed]="!sidebarOpen">
   <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <h2>{{ title }}</h2>
+<aside class="sidebar">
+  <div class="sidebar-header">
+    <div class="header-content">
 
+    </div>
+    <button
+      type="button"
+      class="sidebar-toggle sidebar-toggle--close"
+      (click)="toggleSidebar()"
+    >
+      ✕
+    </button>
+  </div>
+  <div>      <h2>{{ title }}</h2></div>
     <ul>
       <li
         *ngFor="let section of sections"
@@ -16,7 +27,21 @@
   </aside>
 
   <!-- CONTENIDO PRINCIPAL -->
-  <section class="content">
+  <section
+  class="content"
+  [ngClass]="{ 'content--portada': currentSection === 'portada' }"
+  >
+
+    <!-- Botón para abrir sidebar cuando esté cerrado -->
+    <button
+      type="button"
+      class="sidebar-toggle sidebar-toggle--open"
+      *ngIf="!sidebarOpen"
+      (click)="toggleSidebar()"
+    >
+      ☰ Menú
+    </button>
+
     <ng-container [ngSwitch]="currentSection">
       <!-- PORTADA -->
       <div *ngSwitchCase="'portada'" class="section portada">
@@ -33,6 +58,7 @@
           Usa el menú de la izquierda para navegar por cada sección del manual.
         </p>
       </div>
+
 
       <!-- ÍNDICE -->
       <div *ngSwitchCase="'indice'" class="section">
@@ -68,9 +94,8 @@
 
         <h2>Alcance</h2>
         <p>
-          Este manual cubre las funciones principales del usuario final
-          (inicio de sesión, navegación por el menú principal, flujo de
-          depósitos, etc.).
+          Este manual cubre las funciones principales del usuario final (inicio
+          de sesión, navegación por el menú principal, flujo de depósitos, etc.).
         </p>
       </div>
 
@@ -120,7 +145,6 @@
 
       <!-- FUNCIONES Y CARACTERÍSTICAS (TU CONTENIDO ORIGINAL) -->
       <div *ngSwitchCase="'funciones'" class="section">
-        <!-- ⚠️ Aquí va EXACTAMENTE lo que tenías antes -->
         <nav>
           <h1>Manual de usuario NU Bank</h1>
           <button class="ngx-tourguide--button restart" (click)="startTour()">
@@ -172,8 +196,7 @@
         <h1>Soporte técnico</h1>
         <p>Para soporte técnico, comuníquese a:</p>
         <ul>
-          <li>Correo: soporte&#64;nubank-ui.com</li>
-          <li>Teléfono: +57 1 234 5678</li>
+          <li>Correo: soporte&#64;nubank-ejemplo.com</li>
           <li>Horario: Lunes a viernes, 8:00 a.m. a 6:00 p.m.</li>
         </ul>
       </div>
@@ -210,7 +233,7 @@
   </section>
 </div>
 
-<!-- Componente del tour (lo dejamos fuera para que siempre esté disponible) -->
+<!-- Componente del tour -->
 <shipbit-ngx-tour-guide>
   <button
     class="ngx-tourguide--button"
