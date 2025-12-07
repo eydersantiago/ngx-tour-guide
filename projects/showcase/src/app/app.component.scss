@@ -177,6 +177,8 @@ nav {
 //   max-width: 960px;
 // }
 
+
+
 /* Portada */
 .portada h1 {
   font-size: 2rem;
@@ -212,6 +214,8 @@ nav {
   max-width: 32rem;
 }
 
+
+
 /* Iconito de flecha para llamar más la atención */
 .portada .hint::before {
   content: "☝️";
@@ -238,47 +242,6 @@ nav {
   background-position: center;
   background-repeat: no-repeat;
   color: #fff;
-}
-
-
-/* Capa oscura ligera para mejorar legibilidad del texto */
-.section.portada::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-}
-
-.section.portada > * {
-  position: relative;
-  z-index: 1;
-}
-
-.section.portada h1 {
-  font-size: clamp(2.2rem, 3vw, 2.8rem);
-  margin: 0 0 0.5rem 0;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.section.portada .subtitle {
-  font-size: 0.95rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  opacity: 0.9;
-  margin-bottom: 1rem;
-}
-
-.section.portada p {
-  max-width: 36rem;
-  font-size: 0.98rem;
-}
-
-.section.portada .hint {
-  margin-top: 1.25rem;
-  font-style: italic;
-  opacity: 0.9;
 }
 
 
@@ -340,17 +303,90 @@ nav {
 }
 
 
+/* =========================
+   ÍNDICE (tabla de contenido)
+   ========================= */
 
-/* MOBILE */
-@media (max-width: 768px) {
-  .section.portada {
-    padding: 2.5rem 1.5rem;
-    background-image: url('/assets/manual/manual-portada-mobile.jpg');
-  }
-
-  .section.portada h1 {
-    font-size: 1.9rem;
-  }
+.section.section--indice {
+  /* un poco más de espacio en la sección en general */
+  padding-top: 1.25rem;
+  padding-bottom: 1.75rem;
 }
 
+.section.section--indice h1 {
+  margin-bottom: 1.25rem; /* más espacio entre el título y la lista */
+  
+}
 
+.section.section--indice ol {
+  list-style: none;
+  padding-left: 0;
+
+  /* 👇 Dos columnas en escritorio */
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 8rem;   /* espacio horizontal entre columnas */
+  row-gap: 2rem;    /* espacio vertical entre filas */
+  margin: 0;
+}
+
+.section.section--indice li {
+  margin: 0; /* el espacio lo controla row-gap ahora */
+}
+
+/* Enlaces del índice */
+.section.section--indice a {
+  position: relative;
+  font-size: 1.2rem;
+  display: inline-block;
+  cursor: pointer; /* 👈 mano al pasar el mouse */
+  color: var(--c-secondary, #e98074);
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.35rem;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.section.section--indice a:hover {
+  background: rgba(233, 128, 116, 0.15);
+  color: #000;
+  transform: translateX(2px);
+}
+
+/* Tooltip con mensaje breve */
+.section.section--indice a::after {
+  content: 'Haz clic para ir a la sección';
+  position: absolute;
+  left: 0;
+  top: 100%;
+  margin-top: 0.2rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.72rem;
+  border-radius: 0.35rem;
+  background: rgba(15, 23, 42, 0.95);
+  color: #f9fafb;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(4px);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+  z-index: 10;
+}
+
+/* El tooltip solo aparece mientras el puntero está encima */
+.section.section--indice a:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 📱 En pantallas pequeñas volvemos a 1 columna */
+@media (max-width: 768px) {
+  .section.section--indice ol {
+    grid-template-columns: 1fr;
+  }
+}

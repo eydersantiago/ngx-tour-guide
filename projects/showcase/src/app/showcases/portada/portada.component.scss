@@ -1,0 +1,69 @@
+.section.portada {
+  position: relative;
+  max-width: 100%;
+  border: none;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 3rem 3.5rem;
+
+  background-image: url('/assets/manual/manual-portada-desktop.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+}
+
+.section.portada::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+}
+
+.section.portada > * {
+  position: relative;
+  z-index: 1;
+}
+
+.section.portada h1 {
+  font-size: clamp(2.2rem, 3vw, 2.8rem);
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.section.portada .subtitle {
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.section.portada p {
+  max-width: 36rem;
+  font-size: 0.98rem;
+}
+
+.section.portada .hint {
+  margin-top: 1.25rem;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .section.portada {
+    padding: 2.5rem 1.5rem;
+    background-image: url('/assets/manual/manual-portada-mobile.jpg');
+  }
+
+  .section.portada h1 {
+    font-size: 1.9rem;
+  }
+}

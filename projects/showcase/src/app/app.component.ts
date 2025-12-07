@@ -10,7 +10,8 @@ import { HtmlContentComponent } from './showcases/html-content/html-content.comp
 import { RegisterComponent } from './showcases/register/register.component';
 import { SetupComponent } from './showcases/setup/setup.component';
 import { CommonModule } from '@angular/common';
-
+import { PortadaComponent } from './showcases/portada/portada.component';
+import { IntroduccionComponent } from './showcases/introduccion/introduccion.component';
 
 @Component({
   imports: [
@@ -22,6 +23,8 @@ import { CommonModule } from '@angular/common';
     CustomizeActionsComponent,
     CustomizeStopsComponent,
     ShowcaseContainerComponent,
+    PortadaComponent,
+    IntroduccionComponent,
   ],
   selector: 'showcase-root',
   templateUrl: './app.component.html',

@@ -44,59 +44,28 @@
 
     <ng-container [ngSwitch]="currentSection">
       <!-- PORTADA -->
-      <div *ngSwitchCase="'portada'" class="section portada">
-        <h1>Manual de usuario NU Bank</h1>
-        <p class="subtitle">
-          Versión 1.0 · {{ today | date: 'dd/MM/yyyy' }}
-        </p>
-        <p>
-          Este manual guía al usuario paso a paso para aprender a usar la
-          aplicación NU Bank, desde el inicio de sesión hasta el cierre de los
-          procesos principales.
-        </p>
-        <p class="hint">
-          Usa el menú de la izquierda para navegar por cada sección del manual.
-        </p>
+      <div class="section portada">
+        <app-portada *ngSwitchCase="'portada'" ></app-portada>
       </div>
+
 
 
       <!-- ÍNDICE -->
-      <div *ngSwitchCase="'indice'" class="section">
-        <h1>Índice</h1>
-        <ol>
-          <li *ngFor="let s of sections; index as i">
-            <a (click)="goToSection(s.id)">{{ i + 1 }}. {{ s.label }}</a>
+    <div *ngSwitchCase="'indice'" class="section section--indice">
+      <h1>Índice</h1>
+      <ol>
+        <ng-container *ngFor="let s of sections">
+          <li *ngIf="s.id !== 'indice'">
+            <a (click)="goToSection(s.id)">{{ s.label }}</a>
           </li>
-        </ol>
-      </div>
+        </ng-container>
+      </ol>
+    </div>
+
 
       <!-- INTRODUCCIÓN -->
-      <div *ngSwitchCase="'introduccion'" class="section">
-        <h1>Introducción</h1>
-
-        <h2>¿Qué es la app?</h2>
-        <p>
-          Aquí describes brevemente la aplicación: qué permite hacer, a qué
-          tipo de usuario está dirigida y cuáles son sus módulos principales.
-        </p>
-
-        <h2>Objetivo del manual</h2>
-        <p>
-          Explicar, de forma guiada, cómo utilizar la aplicación NU Bank de
-          manera segura y eficiente.
-        </p>
-
-        <h2>¿A quién va dirigido?</h2>
-        <p>
-          Usuarios nuevos y recurrentes que necesiten entender las funciones
-          básicas de la aplicación.
-        </p>
-
-        <h2>Alcance</h2>
-        <p>
-          Este manual cubre las funciones principales del usuario final (inicio
-          de sesión, navegación por el menú principal, flujo de depósitos, etc.).
-        </p>
+      <div class="section">
+        <app-introduccion *ngSwitchCase="'introduccion'"></app-introduccion>
       </div>
 
       <!-- REQUISITOS DEL SISTEMA -->
