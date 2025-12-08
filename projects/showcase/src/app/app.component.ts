@@ -18,6 +18,7 @@ import { SolucionComponent } from './showcases/solucion/solucion.component';
 import { MantenimientoComponent } from './showcases/mantenimiento/mantenimiento.component';
 import { SoporteComponent } from './showcases/soporte/soporte.component';
 import { GlosarioComponent } from './showcases/glosario/glosario.component';
+import { ApendiceComponent } from './showcases/apendice/apendice.component';
 
 @Component({
   imports: [
@@ -37,6 +38,7 @@ import { GlosarioComponent } from './showcases/glosario/glosario.component';
     MantenimientoComponent,
     SoporteComponent,
     GlosarioComponent,
+    ApendiceComponent,
   ],
   selector: 'showcase-root',
   templateUrl: './app.component.html',

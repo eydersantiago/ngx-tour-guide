@@ -6,7 +6,8 @@
   </p>
 
   <!-- CONTROLES: BUSCADOR + FILTROS + CONTADOR -->
-  <div class="glosario-controls">
+ <div class="glosario-controls">
+    <!-- BUSCADOR -->
     <div class="glosario-search">
       <label for="glosarioSearch">Buscar término</label>
       <div class="glosario-search__box">
@@ -14,235 +15,87 @@
           id="glosarioSearch"
           type="text"
           placeholder="Buscar término..."
-          autocomplete="off"
+          [(ngModel)]="searchTerm"
         />
       </div>
     </div>
 
+    <!-- FILTROS -->
     <div class="glosario-filters">
-      <button class="glosario-chip active" data-category="all">Todas</button>
-      <button class="glosario-chip" data-category="cuentas">Cuentas</button>
-      <button class="glosario-chip" data-category="tarjetas">Tarjetas</button>
-      <button class="glosario-chip" data-category="pagos">Pagos y transferencias</button>
-      <button class="glosario-chip" data-category="seguridad">Seguridad</button>
-      <button class="glosario-chip" data-category="soporte">Soporte y ayuda</button>
+      <button
+        class="glosario-chip"
+        [class.active]="activeCategory === 'all'"
+        (click)="setCategory('all')"
+      >
+        Todas
+      </button>
+
+      <button
+        class="glosario-chip"
+        [class.active]="activeCategory === 'cuentas'"
+        (click)="setCategory('cuentas')"
+      >
+        Cuentas
+      </button>
+
+      <button
+        class="glosario-chip"
+        [class.active]="activeCategory === 'tarjetas'"
+        (click)="setCategory('tarjetas')"
+      >
+        Tarjetas
+      </button>
+
+      <button
+        class="glosario-chip"
+        [class.active]="activeCategory === 'pagos'"
+        (click)="setCategory('pagos')"
+      >
+        Pagos y transferencias
+      </button>
+
+      <button
+        class="glosario-chip"
+        [class.active]="activeCategory === 'seguridad'"
+        (click)="setCategory('seguridad')"
+      >
+        Seguridad
+      </button>
+
+      <button
+        class="glosario-chip"
+        [class.active]="activeCategory === 'soporte'"
+        (click)="setCategory('soporte')"
+      >
+        Soporte y ayuda
+      </button>
     </div>
 
+    <!-- CONTADOR -->
     <p class="glosario-count">
-      <span id="glosarioCount">15</span> términos encontrados
+      <span>{{ filteredTerms.length }}</span> términos encontrados
     </p>
   </div>
 
   <!-- LISTA DE TÉRMINOS -->
   <div class="glosario-list">
-    <!-- 1 -->
     <article
       class="glosario-item"
-      data-category="cuentas"
-      data-term="cuenta nu cuenta de ahorros deposito"
+      *ngFor="let item of filteredTerms"
     >
-      <h3>Cuenta Nu</h3>
-      <p class="glosario-category">Cuentas</p>
+      <h3>{{ item.title }}</h3>
+      <p class="glosario-category">{{ item.categoryLabel }}</p>
       <p class="glosario-definition">
-        Producto de depósito de Nu que te permite recibir dinero, hacer transferencias,
-        pagar servicios y ver tus movimientos en tiempo real desde la app.
-      </p>
-    </article>
-
-    <!-- 2 -->
-    <article
-      class="glosario-item"
-      data-category="tarjetas"
-      data-term="tarjeta de credito nu tarjeta nu plastico morado"
-    >
-      <h3>Tarjeta de crédito Nu</h3>
-      <p class="glosario-category">Tarjetas</p>
-      <p class="glosario-definition">
-        Tarjeta de crédito emitida por Nu sin cuota de manejo, administrada desde la app,
-        donde puedes ver tu cupo, movimientos, fecha de corte y pago.
-      </p>
-    </article>
-
-    <!-- 3 -->
-    <article
-      class="glosario-item"
-      data-category="tarjetas"
-      data-term="cupo disponible cupo total limite credito"
-    >
-      <h3>Cupo disponible</h3>
-      <p class="glosario-category">Tarjetas</p>
-      <p class="glosario-definition">
-        Parte del cupo total de tu tarjeta de crédito que aún puedes usar para compras,
-        avances o pagos. Disminuye cuando haces consumos y aumenta cuando pagas.
-      </p>
-    </article>
-
-    <!-- 4 -->
-    <article
-      class="glosario-item"
-      data-category="tarjetas"
-      data-term="fecha de corte facturacion extracto"
-    >
-      <h3>Fecha de corte</h3>
-      <p class="glosario-category">Tarjetas</p>
-      <p class="glosario-definition">
-        Día del mes en el que se cierra tu periodo de facturación. A partir de esa fecha se
-        genera tu estado de cuenta con el valor a pagar y la fecha de pago.
-      </p>
-    </article>
-
-    <!-- 5 -->
-    <article
-      class="glosario-item"
-      data-category="tarjetas"
-      data-term="fecha de pago vencimiento limite pago"
-    >
-      <h3>Fecha de pago</h3>
-      <p class="glosario-category">Tarjetas</p>
-      <p class="glosario-definition">
-        Último día para pagar tu estado de cuenta sin generar intereses por mora. La ves
-        claramente señalada en la app y en tu extracto.
-      </p>
-    </article>
-
-    <!-- 6 -->
-    <article
-      class="glosario-item"
-      data-category="tarjetas"
-      data-term="pago minimo cuota minima intereses"
-    >
-      <h3>Pago mínimo</h3>
-      <p class="glosario-category">Tarjetas</p>
-      <p class="glosario-definition">
-        Valor mínimo que debes pagar en tu tarjeta de crédito para mantenerla al día. Pagar
-        solo el mínimo puede generar intereses sobre el saldo restante.
-      </p>
-    </article>
-
-    <!-- 7 -->
-    <article
-      class="glosario-item"
-      data-category="pagos"
-      data-term="compra en cuotas cuotas diferido"
-    >
-      <h3>Compra en cuotas</h3>
-      <p class="glosario-category">Pagos y transferencias</p>
-      <p class="glosario-definition">
-        Opción que te permite diferir una compra con tu tarjeta de crédito en varias cuotas
-        mensuales, con una tasa de interés y plazo definidos.
-      </p>
-    </article>
-
-    <!-- 8 -->
-    <article
-      class="glosario-item"
-      data-category="pagos"
-      data-term="transferencia enviar dinero cuenta cdi"
-    >
-      <h3>Transferencia</h3>
-      <p class="glosario-category">Pagos y transferencias</p>
-      <p class="glosario-definition">
-        Movimiento de dinero desde tu Cuenta Nu hacia otra cuenta propia o de terceros,
-        ya sea en Nu u otros bancos, usando los datos de la cuenta o alias registrado.
-      </p>
-    </article>
-
-    <!-- 9 -->
-    <article
-      class="glosario-item"
-      data-category="seguridad"
-      data-term="bloqueo temporal tarjeta bloquear congelar"
-    >
-      <h3>Bloqueo temporal</h3>
-      <p class="glosario-category">Seguridad</p>
-      <p class="glosario-definition">
-        Función de la app que te permite pausar el uso de tu tarjeta (por pérdida momentánea
-        o duda) sin cancelarla definitivamente. Puedes desbloquearla después desde la app.
-      </p>
-    </article>
-
-    <!-- 10 -->
-    <article
-      class="glosario-item"
-      data-category="seguridad"
-      data-term="contrasena clave acceso inicio sesion"
-    >
-      <h3>Contraseña de acceso</h3>
-      <p class="glosario-category">Seguridad</p>
-      <p class="glosario-definition">
-        Clave que usas para iniciar sesión en la app de Nu. Debe ser personal, segura y no
-        debe compartirse con nadie.
-      </p>
-    </article>
-
-    <!-- 11 -->
-    <article
-      class="glosario-item"
-      data-category="seguridad"
-      data-term="codigo de verificacion token sms"
-    >
-      <h3>Código de verificación</h3>
-      <p class="glosario-category">Seguridad</p>
-      <p class="glosario-definition">
-        Código de un solo uso que Nu envía por SMS, correo u otro canal para confirmar que
-        eres tú quien está realizando una acción (inicio de sesión, cambio de datos, etc.).
-      </p>
-    </article>
-
-    <!-- 12 -->
-    <article
-      class="glosario-item"
-      data-category="soporte"
-      data-term="xpeer servicio al cliente agente chat"
-    >
-      <h3>Xpeer</h3>
-      <p class="glosario-category">Soporte y ayuda</p>
-      <p class="glosario-definition">
-        Miembro del equipo de servicio al cliente de Nu que te atiende a través del chat u
-        otros canales para ayudarte a resolver dudas y problemas.
-      </p>
-    </article>
-
-    <!-- 13 -->
-    <article
-      class="glosario-item"
-      data-category="soporte"
-      data-term="centro de ayuda nu portal soporte emergencias"
-    >
-      <h3>Centro de Ayuda Nu</h3>
-      <p class="glosario-category">Soporte y ayuda</p>
-      <p class="glosario-definition">
-        Sección en línea con artículos y guías para casos de emergencia, seguridad y uso
-        de la app, disponible desde la web y desde la app.
-      </p>
-    </article>
-
-    <!-- 14 -->
-    <article
-      class="glosario-item"
-      data-category="soporte"
-      data-term="pqr peticiones quejas reclamos"
-    >
-      <h3>PQR</h3>
-      <p class="glosario-category">Soporte y ayuda</p>
-      <p class="glosario-definition">
-        Sigla de Peticiones, Quejas y Reclamos. Forma formal de comunicar una inconformidad
-        o solicitud que Nu debe responder dentro de plazos establecidos.
-      </p>
-    </article>
-
-    <!-- 15 -->
-    <article
-      class="glosario-item"
-      data-category="cuentas"
-      data-term="estado de cuenta extracto resumen mensual"
-    >
-      <h3>Estado de cuenta</h3>
-      <p class="glosario-category">Cuentas</p>
-      <p class="glosario-definition">
-        Documento o pantalla resumen donde ves tus movimientos, saldos, valores a pagar y
-        fechas importantes de tu tarjeta o cuenta en un periodo determinado.
+        {{ item.definition }}
       </p>
     </article>
   </div>
+
+  <div class="glosario-controls glosario-controls--bottom">
+    <p class="glosario-count">
+      <span id="glosarioCount">15</span> términos encontrados
+    </p>
+  </div>
+
+
 </section>

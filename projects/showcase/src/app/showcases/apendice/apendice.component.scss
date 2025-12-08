@@ -1,0 +1,172 @@
+#apendiceImport {
+  position: relative;
+  padding: 2.5rem 3rem 3rem;
+
+  > h1 {
+    margin-bottom: 0.75rem;
+  }
+
+  .apendice-intro {
+    margin: 0 0 1.8rem;
+    max-width: 52rem;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: rgba(226, 232, 240, 0.9);
+  }
+
+  .apendice-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.2rem;
+  }
+
+  .apendice-card {
+    background: rgba(15, 23, 42, 0.96);
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.55);
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(15, 23, 42, 0.9);
+    overflow: hidden;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+
+    &.expanded {
+      border-color: rgba(196, 181, 253, 0.9);
+      box-shadow:
+        0 8px 18px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(129, 140, 248, 0.8);
+
+      .apendice-toggle__icon {
+        transform: rotate(90deg);
+      }
+
+      .apendice-panel {
+        max-height: 1000px;
+        opacity: 1;
+        padding: 0.75rem 1.25rem 1rem;
+      }
+    }
+  }
+
+  .apendice-toggle {
+    width: 100%;
+    padding: 0.9rem 1.1rem;
+    background: rgba(15, 23, 42, 0.98);
+    border: none;
+    border-bottom: 1px solid rgba(51, 65, 85, 0.9);
+    color: rgba(248, 250, 252, 0.98);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.98rem;
+    font-weight: 600;
+
+    &:hover {
+      background: rgba(30, 64, 175, 0.35);
+    }
+  }
+
+  .apendice-toggle__icon {
+    font-size: 1.1rem;
+    transition: transform 0.25s ease;
+  }
+
+  .apendice-panel {
+    max-height: 0;
+    opacity: 0;
+    padding: 0 1.25rem;
+    transition:
+      max-height 0.35s ease,
+      opacity 0.25s ease,
+      padding 0.25s ease;
+  }
+
+  .apendice-text {
+    margin: 0 0 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: rgba(226, 232, 240, 0.96);
+  }
+
+  .apendice-list {
+    margin: 0.2rem 0 0;
+    padding-left: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    li {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: rgba(226, 232, 240, 0.96);
+    }
+  }
+
+  .apendice-warning {
+    margin-top: 0.7rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(252, 231, 243, 0.96);
+    border-left: 3px solid rgba(248, 113, 113, 0.9);
+    padding-left: 0.75rem;
+  }
+
+  .apendice-actions {
+    margin-top: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .apendice-action {
+    padding: 0.7rem 0.8rem;
+    border-radius: 0.75rem;
+    background: rgba(15, 23, 42, 0.98);
+    border: 1px solid rgba(51, 65, 85, 0.9);
+
+    h3 {
+      margin: 0 0 0.25rem;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: rgba(248, 250, 252, 0.98);
+    }
+
+    .apendice-route {
+      margin: 0;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: rgba(209, 213, 219, 0.98);
+
+      span {
+        font-weight: 600;
+        color: rgba(196, 181, 253, 0.98);
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .apendice-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem 2.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 1rem 2rem;
+
+    .apendice-toggle {
+      font-size: 0.95rem;
+      padding: 0.8rem 0.9rem;
+    }
+
+    .apendice-panel {
+      padding: 0 0.9rem;
+    }
+  }
+}
