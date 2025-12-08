@@ -1,0 +1,199 @@
+/* =========================
+   SECCIÓN SOLUCIÓN
+   ========================= */
+
+#solucionImport {
+  position: relative;
+  padding: 2.5rem 3rem 3rem;
+  background: transparent;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: none;
+
+  > h2 {
+    margin-bottom: 0.75rem;
+    /* usa el estilo de h2 global del padre */
+  }
+
+  .solucion-intro {
+    margin: 0 0 1.8rem;
+    max-width: 52rem;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: rgba(226, 232, 240, 0.9);
+  }
+
+  .solucion-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem 1.5rem;
+  }
+
+  .solucion-card {
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    background: rgba(15, 23, 42, 0.96);
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(15, 23, 42, 0.9);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .solucion-card--alert {
+    border-left: 4px solid rgba(233, 128, 116, 0.95);
+  }
+
+  /* Summary (cabecera del acordeón) */
+  .solucion-card > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 0.9rem 1.1rem 0.95rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    position: relative;
+
+    background: radial-gradient(
+      circle at top left,
+      rgba(148, 163, 184, 0.2),
+      rgba(15, 23, 42, 0.95) 65%
+    );
+  }
+
+  .solucion-card > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .solucion-card > summary::after {
+    content: '›';
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgba(148, 163, 184, 0.95);
+    transition: transform 0.2s ease;
+  }
+
+  .solucion-card[open] > summary::after {
+    transform: translateY(-50%) rotate(-90deg);
+  }
+
+  .solucion-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #0b1120;
+    background: rgba(148, 163, 184, 0.9);
+  }
+
+  .solucion-card--alert .solucion-tag {
+    background: rgba(233, 128, 116, 0.95);
+  }
+
+  .solucion-title {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: rgba(248, 250, 252, 0.98);
+    padding-right: 1.75rem; /* espacio para la flecha */
+  }
+
+  /* Cuerpo del acordeón */
+  .solucion-body {
+    padding: 0.9rem 1.2rem 1.1rem;
+    border-top: 1px solid rgba(30, 64, 175, 0.6);
+    background: radial-gradient(
+      circle at top right,
+      rgba(15, 23, 42, 1),
+      rgba(15, 23, 42, 0.98) 70%
+    );
+
+    h3 {
+      margin: 0 0 0.45rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: rgba(191, 219, 254, 0.98);
+    }
+
+    h3 + ul {
+      margin-top: 0;
+    }
+
+    ul {
+      margin: 0 0 0.8rem;
+      padding-left: 1.1rem;
+      list-style: disc;
+      color: rgba(226, 232, 240, 0.96);
+
+      li {
+        margin-bottom: 0.25rem;
+        line-height: 1.6;
+        font-size: 0.92rem;
+      }
+
+      ul {
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+        list-style: circle;
+
+        li {
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    ul:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  /* Hover ligero en la cabecera */
+  .solucion-card > summary:hover {
+    background: radial-gradient(
+      circle at top left,
+      rgba(148, 163, 184, 0.28),
+      rgba(15, 23, 42, 0.98) 70%
+    );
+  }
+
+  /* Responsive tablets */
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem 2.5rem;
+
+    .solucion-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Responsive móviles */
+  @media (max-width: 480px) {
+    padding: 1.5rem 1rem 2rem;
+
+    .solucion-intro {
+      font-size: 0.94rem;
+    }
+
+    .solucion-card > summary {
+      padding: 0.8rem 0.9rem 0.85rem 0.9rem;
+    }
+
+    .solucion-title {
+      font-size: 0.94rem;
+    }
+
+    .solucion-body {
+      padding: 0.8rem 0.9rem 0.95rem;
+
+      ul li {
+        font-size: 0.9rem;
+      }
+    }
+  }
+}

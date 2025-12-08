@@ -1,0 +1,234 @@
+/* =========================
+   SECCIÓN INTRODUCCIÓN
+   ========================= */
+
+#introduccionImport {
+  position: relative;
+  padding: 2.5rem 3rem;
+  background: transparent;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: none;
+  overflow: hidden;
+
+  &::before {
+    content: none;
+  }
+
+  /* 🔹 Mini tarjetas a TODO el ancho de la pantalla */
+  > h1 + p,
+  > h1 + p + p,
+  .collapsible-section h2,
+  .collapsible-content {
+    width: 72vw;           /* ocupa todo el viewport */
+    margin-left: 50%;       /* parte desde el centro del contenedor */
+    transform: translateX(-50%); /* y se centra respecto al viewport */
+    border-radius: 0.75rem;
+  }
+
+  /* Párrafos introductorios */
+  > h1 + p,
+  > h1 + p + p {
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1.1rem;
+    border: 1px solid rgba(142, 198, 198, 0.15);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+    font-size: 1.02rem;
+    line-height: 1.7;
+    margin-bottom: 1.1rem;
+    color: rgba(0, 0, 0, 0.85);
+
+    &:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      transform: translateX(-50%) translateY(-2px);
+      border-color: rgba(142, 198, 198, 0.3);
+    }
+  }
+
+  .collapsible-section {
+    margin-top: 1.25rem;
+    margin-bottom: 0.85rem;
+  }
+
+  /* Subtítulos h2 como botones desplegables */
+  h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0;
+    color: rgb(255, 255, 255);
+    position: relative;
+    padding: 0.75rem 1rem;
+    padding-right: 2.5rem;
+    cursor: pointer;
+    user-select: none;
+
+    background: rgba(228, 228, 228, 0.236);
+    border-radius: 0.75rem;
+    border: 1px solid rgba(142, 198, 198, 0.15);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s ease;
+
+    /* Icono de flecha */
+    &::before {
+      content: '▸';
+      position: absolute;
+      left: 0.9rem;
+      color: var(--c-secondary, #e98074);
+      font-size: 0.9rem;
+      font-weight: 900;
+      transition: transform 0.3s ease;
+    }
+
+    /* Icono de chevron derecha */
+    &::after {
+      content: '›';
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--c-secondary, #e98074);
+      transition: transform 0.3s ease;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.7);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      transform: translateX(-50%) translateY(-2px);
+      border-color: rgba(142, 198, 198, 0.3);
+      color: var(--c-secondary, #e98074);
+    }
+
+    &.expanded {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      border-bottom-color: transparent;
+
+      &::after {
+        transform: translateY(-50%) rotate(-90deg);
+      }
+    }
+  }
+
+  /* Contenido desplegable */
+  .collapsible-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
+    opacity: 0;
+
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(142, 198, 198, 0.15);
+    border-top: none;
+    border-bottom-left-radius: 0.75rem;
+    border-bottom-right-radius: 0.75rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+
+    p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: rgba(0, 0, 0, 0.85);
+      text-align: justify;
+      margin: 0;
+    }
+
+    &.expanded {
+      max-height: 700px;
+      opacity: 1;
+      padding: 1rem;
+      padding-top: 0.7rem;
+    }
+  }
+
+  animation: fadeInUp 0.6s ease-out;
+}
+
+/* Animación keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive: no hace falta tocar el ancho, 100vw ya se adapta */
+@media (max-width: 768px) {
+  #introduccionImport {
+    padding: 2rem 1.5rem;
+
+    h2 {
+      font-size: 1.3rem;
+      padding: 0.7rem 0.9rem;
+      padding-right: 2.1rem;
+
+      &::after {
+        right: 0.9rem;
+        font-size: 1.4rem;
+      }
+    }
+
+    > h1 + p,
+    > h1 + p + p {
+      font-size: 0.98rem;
+      padding: 0.95rem;
+    }
+
+    .collapsible-content {
+      p {
+        font-size: 0.98rem;
+        text-align: left;
+      }
+
+      &.expanded {
+        padding: 0.9rem;
+        padding-top: 0.45rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  #introduccionImport {
+    padding: 1.5rem 1rem;
+    border-radius: 0.75rem;
+
+    h2 {
+      font-size: 1.15rem;
+      padding: 0.65rem 0.8rem;
+      padding-right: 2rem;
+
+      &::before {
+        left: 0.8rem;
+        font-size: 1rem;
+      }
+
+      &::after {
+        right: 0.8rem;
+        font-size: 1.35rem;
+      }
+    }
+
+    > h1 + p,
+    > h1 + p + p {
+      font-size: 0.94rem;
+      padding: 0.85rem;
+    }
+
+    .collapsible-content {
+      p {
+        font-size: 0.94rem;
+      }
+
+      &.expanded {
+        padding: 0.85rem;
+        padding-top: 0.35rem;
+      }
+    }
+  }
+}

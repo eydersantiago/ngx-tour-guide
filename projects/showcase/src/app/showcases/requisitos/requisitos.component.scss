@@ -1,0 +1,171 @@
+/* =========================
+   SECCIÓN REQUISITOS
+   ========================= */
+
+#requisitosImport {
+  position: relative;
+  padding: 2.5rem 3rem 3rem;
+  background: transparent;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: none;
+
+  > h1 {
+    margin-bottom: 1.75rem;
+    /* deja que el estilo de h1 venga del padre (tamaño, color, etc.) */
+  }
+
+  .requisitos-table {
+    border-radius: 1rem;
+    border: 1px solid rgba(142, 198, 198, 0.25);
+    background: linear-gradient(
+      135deg,
+      rgba(15, 23, 42, 0.95) 0%,
+      rgba(31, 41, 55, 0.98) 100%
+    );
+    box-shadow:
+      0 4px 10px rgba(0, 0, 0, 0.35),
+      0 0 0 1px rgba(255, 255, 255, 0.02);
+    overflow: hidden;
+  }
+
+  .req-row {
+    display: grid;
+    grid-template-columns: minmax(130px, 220px) minmax(0, 1fr);
+  }
+
+  .req-cell {
+    padding: 1.1rem 1.25rem;
+    font-size: 0.98rem;
+  }
+
+  /* Encabezado */
+  .req-header {
+    background: linear-gradient(
+      90deg,
+      rgba(142, 198, 198, 0.25) 0%,
+      rgba(233, 128, 116, 0.35) 100%
+    );
+    .req-cell {
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.95rem;
+      color: #d7e3ff;
+    }
+  }
+
+  /* Columnas */
+  .req-cell--platform {
+    border-right: 1px solid rgba(148, 163, 184, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .req-cell--details {
+    border-left: 1px solid rgba(15, 23, 42, 0.75);
+  }
+
+  /* Filas alternadas */
+  .req-row:not(.req-header):nth-child(odd) {
+    background: rgba(15, 23, 42, 0.9);
+  }
+
+  .req-row:not(.req-header):nth-child(even) {
+    background: rgba(17, 24, 39, 0.9);
+  }
+
+  /* Badges de plataforma */
+  .platform-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #0b1120;
+    background: rgba(148, 163, 184, 0.95);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    white-space: nowrap;
+  }
+
+  .platform-badge.android {
+    background: rgba(74, 222, 128, 0.95);
+  }
+
+  .platform-badge.ios {
+    background: rgba(96, 165, 250, 0.95);
+  }
+
+  /* Lista de requisitos */
+  .req-cell--details ul {
+    margin: 0;
+    padding-left: 1.1rem;
+    list-style: disc;
+    color: rgba(226, 232, 240, 0.96);
+
+    li {
+      margin-bottom: 0.4rem;
+      line-height: 1.6;
+    }
+  }
+
+  .nota {
+    margin-top: 0.6rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: rgba(248, 250, 252, 0.85);
+    padding: 0.45rem 0.7rem;
+    border-radius: 0.5rem;
+    background: rgba(233, 128, 116, 0.1);
+    border: 1px dashed rgba(233, 128, 116, 0.4);
+    font-style: italic;
+  }
+
+  /* Responsive tablets */
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem;
+
+    .req-row {
+      grid-template-columns: 1fr;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.9);
+    }
+
+    .req-cell--platform {
+      justify-content: flex-start;
+      border-right: none;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .req-cell--details {
+      border-left: none;
+    }
+  }
+
+  /* Responsive móviles */
+  @media (max-width: 480px) {
+    padding: 1.5rem 1rem;
+
+    .req-cell {
+      padding: 0.9rem 0.85rem;
+    }
+
+    .platform-badge {
+      font-size: 0.85rem;
+      padding: 0.3rem 0.8rem;
+    }
+
+    .req-cell--details ul li {
+      font-size: 0.9rem;
+    }
+
+    .nota {
+      font-size: 0.85rem;
+    }
+  }
+}

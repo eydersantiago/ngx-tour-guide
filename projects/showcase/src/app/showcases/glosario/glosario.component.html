@@ -1,0 +1,101 @@
+<section id="glosarioImport">
+  <h1>Glosario de términos</h1>
+  <p class="glosario-intro">
+    Aquí puedes consultar el significado de los términos más usados en la app de Nu:
+    tarjetas, cuenta, pagos, seguridad y soporte.
+  </p>
+
+  <!-- CONTROLES: BUSCADOR + FILTROS + CONTADOR -->
+ <div class="glosario-controls">
+    <!-- BUSCADOR -->
+    <div class="glosario-search">
+      <label for="glosarioSearch">Buscar término</label>
+      <div class="glosario-search__box">
+        <input
+          id="glosarioSearch"
+          type="text"
+          placeholder="Buscar término..."
+          [(ngModel)]="searchTerm"
+        />
+      </div>
+    </div>
+
+    <!-- FILTROS -->
+    <div class="glosario-filters">
+      <button
+        class="glosario-chip"
+        [class.active]="activeCategory === 'all'"
+        (click)="setCategory('all')"
+      >
+        Todas
+      </button>
+
+      <button
+        class="glosario-chip"
+        [class.active]="activeCategory === 'cuentas'"
+        (click)="setCategory('cuentas')"
+      >
+        Cuentas
+      </button>
+
+      <button
+        class="glosario-chip"
+        [class.active]="activeCategory === 'tarjetas'"
+        (click)="setCategory('tarjetas')"
+      >
+        Tarjetas
+      </button>
+
+      <button
+        class="glosario-chip"
+        [class.active]="activeCategory === 'pagos'"
+        (click)="setCategory('pagos')"
+      >
+        Pagos y transferencias
+      </button>
+
+      <button
+        class="glosario-chip"
+        [class.active]="activeCategory === 'seguridad'"
+        (click)="setCategory('seguridad')"
+      >
+        Seguridad
+      </button>
+
+      <button
+        class="glosario-chip"
+        [class.active]="activeCategory === 'soporte'"
+        (click)="setCategory('soporte')"
+      >
+        Soporte y ayuda
+      </button>
+    </div>
+
+    <!-- CONTADOR -->
+    <p class="glosario-count">
+      <span>{{ filteredTerms.length }}</span> términos encontrados
+    </p>
+  </div>
+
+  <!-- LISTA DE TÉRMINOS -->
+  <div class="glosario-list">
+    <article
+      class="glosario-item"
+      *ngFor="let item of filteredTerms"
+    >
+      <h3>{{ item.title }}</h3>
+      <p class="glosario-category">{{ item.categoryLabel }}</p>
+      <p class="glosario-definition">
+        {{ item.definition }}
+      </p>
+    </article>
+  </div>
+
+  <div class="glosario-controls glosario-controls--bottom">
+    <p class="glosario-count">
+      <span id="glosarioCount">15</span> términos encontrados
+    </p>
+  </div>
+
+
+</section>

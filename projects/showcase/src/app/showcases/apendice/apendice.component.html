@@ -1,0 +1,207 @@
+<section id="apendiceImport">
+  <h1>Apéndices</h1>
+  <p class="apendice-intro">
+    En esta sección encontrarás información complementaria para usar la app de Nu de forma
+    segura y aprovechar las funciones principales.
+  </p>
+
+  <div class="apendice-grid">
+
+    <!-- APÉNDICE A -->
+    <article
+      class="apendice-card"
+      [class.expanded]="isOpen('A')"
+    >
+      <button
+        type="button"
+        class="apendice-toggle"
+        (click)="toggle('A')"
+        [attr.aria-expanded]="isOpen('A')"
+        aria-controls="apendice-panel-A"
+        id="apendice-toggle-A"
+      >
+        <span>Apéndice A. Información que nunca debes compartir</span>
+        <span class="apendice-toggle__icon">▸</span>
+      </button>
+
+      <div
+        class="apendice-panel"
+        [id]="'apendice-panel-A'"
+        role="region"
+        aria-labelledby="apendice-toggle-A"
+      >
+        <p class="apendice-text">
+          Por tu seguridad, el banco nunca te pedirá que compartas la siguiente información:
+        </p>
+        <ul class="apendice-list">
+          <li>Tu contraseña de la app.</li>
+          <li>Tu PIN de tarjeta.</li>
+          <li>El código completo que recibes por SMS o correo.</li>
+          <li>
+            Fotos por ambos lados de tu tarjeta con todos los números visibles
+            (incluyendo código de seguridad).
+          </li>
+        </ul>
+        <p class="apendice-warning">
+          Si alguien te pide esta información por teléfono, chat, correo o redes sociales,
+          <strong>no la compartas</strong> y repórtalo de inmediato por los canales oficiales de Nu.
+        </p>
+      </div>
+    </article>
+
+    <!-- APÉNDICE B -->
+    <article
+      class="apendice-card"
+      [class.expanded]="isOpen('B')"
+    >
+      <button
+        type="button"
+        class="apendice-toggle"
+        (click)="toggle('B')"
+        [attr.aria-expanded]="isOpen('B')"
+        aria-controls="apendice-panel-B"
+        id="apendice-toggle-B"
+      >
+        <span>Apéndice B. Recomendaciones rápidas de seguridad</span>
+        <span class="apendice-toggle__icon">▸</span>
+      </button>
+
+      <div
+        class="apendice-panel"
+        [id]="'apendice-panel-B'"
+        role="region"
+        aria-labelledby="apendice-toggle-B"
+      >
+        <ul class="apendice-list">
+          <li>
+            Activa el bloqueo de pantalla de tu celular (PIN, patrón, huella o reconocimiento
+            facial).
+          </li>
+          <li>Mantén la app de Nu y el sistema operativo de tu celular actualizados.</li>
+          <li>No uses redes Wi-Fi públicas para hacer operaciones importantes.</li>
+          <li>Revisa tus movimientos con frecuencia desde la app.</li>
+          <li>
+            Cierra sesión si usas la app en un dispositivo que no es tuyo o que compartes con
+            otras personas.
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <!-- APÉNDICE C -->
+    <article
+      class="apendice-card"
+      [class.expanded]="isOpen('C')"
+    >
+      <button
+        type="button"
+        class="apendice-toggle"
+        (click)="toggle('C')"
+        [attr.aria-expanded]="isOpen('C')"
+        aria-controls="apendice-panel-C"
+        id="apendice-toggle-C"
+      >
+        <span>Apéndice C. Resumen de acciones importantes en la app</span>
+        <span class="apendice-toggle__icon">▸</span>
+      </button>
+
+      <div
+        class="apendice-panel"
+        [id]="'apendice-panel-C'"
+        role="region"
+        aria-labelledby="apendice-toggle-C"
+      >
+        <p class="apendice-text">
+          Estas rutas pueden variar según la versión de la app, pero sirven como guía general:
+        </p>
+
+        <div class="apendice-actions">
+          <div class="apendice-action">
+            <h3>Ver saldo y movimientos</h3>
+            <p class="apendice-route">
+              <span>Ruta:</span> Inicio → Cuenta de ahorros → Ver detalles de mi cuenta
+            </p>
+          </div>
+
+          <div class="apendice-action">
+            <h3>Hacer una transferencia</h3>
+            <p class="apendice-route">
+              <span>Ruta:</span> Inicio → Enviar → Elegir destinatario → Confirmar datos →
+              Confirmar operación
+            </p>
+          </div>
+
+          <div class="apendice-action">
+            <h3>Depositar dinero</h3>
+            <p class="apendice-route">
+              <span>Ruta:</span> Inicio → Depositar → Ver opciones disponibles (transferencia
+              desde otro banco, corresponsal, etc.)
+            </p>
+          </div>
+
+          <div class="apendice-action">
+            <h3>Pagar servicios</h3>
+            <p class="apendice-route">
+              <span>Ruta:</span> Inicio → Pagar servicios → Seleccionar empresa o servicio →
+              Ingresar referencia → Confirmar
+            </p>
+          </div>
+
+          <div class="apendice-action">
+            <h3>Bloquear tarjeta</h3>
+            <p class="apendice-route">
+              <span>Ruta:</span> Menú → Tarjetas → Seleccionar tarjeta → Bloquear
+            </p>
+          </div>
+
+          <div class="apendice-action">
+            <h3>Contactar soporte</h3>
+            <p class="apendice-route">
+              <span>Ruta:</span> Menú → Ayuda / Soporte → Chat, teléfono o Centro de ayuda
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- APÉNDICE D -->
+    <article
+      class="apendice-card"
+      [class.expanded]="isOpen('D')"
+    >
+      <button
+        type="button"
+        class="apendice-toggle"
+        (click)="toggle('D')"
+        [attr.aria-expanded]="isOpen('D')"
+        aria-controls="apendice-panel-D"
+        id="apendice-toggle-D"
+      >
+        <span>Apéndice D. Checklist antes de confirmar una operación</span>
+        <span class="apendice-toggle__icon">▸</span>
+      </button>
+
+      <div
+        class="apendice-panel"
+        [id]="'apendice-panel-D'"
+        role="region"
+        aria-labelledby="apendice-toggle-D"
+      >
+        <p class="apendice-text">
+          Antes de tocar <strong>“Confirmar”</strong>, verifica siempre lo siguiente:
+        </p>
+        <ul class="apendice-list">
+          <li>Revisa el monto que vas a enviar o pagar.</li>
+          <li>Verifica el nombre y número de la cuenta o servicio de destino.</li>
+          <li>Lee el resumen de la operación que muestra la app.</li>
+          <li>Asegúrate de estar en una conexión segura (mejor si es una red confiable).</li>
+          <li>
+            Si algo no te cuadra, cancela la operación y revisa los datos de nuevo antes de
+            intentarlo otra vez.
+          </li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</section>
