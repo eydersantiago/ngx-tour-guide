@@ -70,33 +70,12 @@
 
       <!-- REQUISITOS DEL SISTEMA -->
       <div *ngSwitchCase="'requisitos'" class="section">
-        <h1>Requisitos del sistema</h1>
-        <ul>
-          <li>Navegador compatible (Chrome, Edge, Firefox, etc.).</li>
-          <li>Conexión a internet estable.</li>
-          <li>Cuenta de usuario activa en NU Bank.</li>
-          <li>
-            Rol adecuado asignado (p. ej. Cliente) según las funciones que se
-            deseen utilizar.
-          </li>
-        </ul>
+        <app-requisitos></app-requisitos>
       </div>
 
       <!-- INSTALACIÓN / ACCESO -->
       <div *ngSwitchCase="'instalacion'" class="section">
-        <h1>Instalación / acceso</h1>
-        <ol>
-          <li>Abra su navegador y diríjase a la URL oficial de la aplicación.</li>
-          <li>Ingrese su correo electrónico y contraseña registrados.</li>
-          <li>
-            Si olvidó su contraseña, use la opción de recuperación y siga los
-            pasos indicados.
-          </li>
-          <li>
-            Si es usuario nuevo, complete el proceso de registro según las
-            instrucciones de la aplicación.
-          </li>
-        </ol>
+        <app-instalacion></app-instalacion>
       </div>
 
       <!-- DESCRIPCIÓN DE LA INTERFAZ -->
@@ -115,9 +94,9 @@
       <!-- FUNCIONES Y CARACTERÍSTICAS (TU CONTENIDO ORIGINAL) -->
       <div *ngSwitchCase="'funciones'" class="section">
         <nav>
-          <h1>Manual de usuario NU Bank</h1>
+          <h1>Funciones principales</h1>
           <button class="ngx-tourguide--button restart" (click)="startTour()">
-            Empecemos el tour de guía
+            Tomar un recorrido guiado
           </button>
         </nav>
 
@@ -132,57 +111,22 @@
 
       <!-- FAQ -->
       <div *ngSwitchCase="'faq'" class="section">
-        <h1>Solución de problemas / FAQ</h1>
-        <ul>
-          <li>
-            <strong>No puedo iniciar sesión:</strong> verifica tus credenciales
-            o usa la opción de recuperación de contraseña.
-          </li>
-          <li>
-            <strong>No veo mis movimientos:</strong> revisa los filtros de fecha
-            o recarga la página.
-          </li>
-          <li>
-            <strong>El tour no se muestra:</strong> asegúrate de estar en la
-            sección “Funciones y características” y haz clic en el botón
-            “Empecemos el tour de guía”.
-          </li>
-        </ul>
+        <app-solucion></app-solucion>
       </div>
 
       <!-- MANTENIMIENTO -->
       <div *ngSwitchCase="'mantenimiento'" class="section">
-        <h1>Mantenimiento y actualizaciones</h1>
-        <p>
-          Las actualizaciones de la aplicación NU Bank se realizan de forma
-          centralizada. Normalmente el usuario no necesita realizar ninguna
-          acción adicional, salvo recargar la página después de una actualización.
-        </p>
+        <app-mantenimiento></app-mantenimiento>
       </div>
 
       <!-- SOPORTE -->
       <div *ngSwitchCase="'soporte'" class="section">
-        <h1>Soporte técnico</h1>
-        <p>Para soporte técnico, comuníquese a:</p>
-        <ul>
-          <li>Correo: soporte&#64;nubank-ejemplo.com</li>
-          <li>Horario: Lunes a viernes, 8:00 a.m. a 6:00 p.m.</li>
-        </ul>
+        <app-soporte></app-soporte>
       </div>
 
       <!-- GLOSARIO -->
       <div *ngSwitchCase="'glosario'" class="section">
-        <h1>Glosario</h1>
-        <dl>
-          <dt>Dashboard</dt>
-          <dd>
-            Pantalla principal que muestra el resumen de la información de la cuenta.
-          </dd>
-          <dt>Tour guiado</dt>
-          <dd>
-            Recorrido interactivo que resalta elementos de la interfaz y explica su uso.
-          </dd>
-        </dl>
+        <app-glosario></app-glosario>
       </div>
 
       <!-- APÉNDICES -->

@@ -1,0 +1,196 @@
+/* =========================
+   SECCIÓN GLOSARIO
+   ========================= */
+
+#glosarioImport {
+  position: relative;
+  padding: 2.5rem 3rem 3rem;
+  background: transparent;
+  border-radius: 1rem;
+  border: none;
+  box-shadow: none;
+
+  > h2 {
+    margin-bottom: 0.75rem;
+  }
+
+  .glosario-intro {
+    margin: 0 0 1.8rem;
+    max-width: 52rem;
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: rgba(226, 232, 240, 0.9);
+  }
+
+  /* CONTROLES SUPERIORES */
+  .glosario-controls {
+    display: grid;
+    grid-template-columns: minmax(0, 2.2fr) minmax(0, 3fr);
+    gap: 1.2rem 1.5rem;
+    align-items: flex-end;
+    margin-bottom: 1.6rem;
+  }
+
+  .glosario-search {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(148, 163, 184, 0.9);
+    }
+  }
+
+  .glosario-search__box {
+    position: relative;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.6);
+    background: rgba(15, 23, 42, 0.96);
+    box-shadow:
+      0 3px 10px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(15, 23, 42, 0.9);
+    padding: 0.35rem 0.9rem;
+
+    input {
+      width: 100%;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: rgba(248, 250, 252, 0.98);
+      font-size: 0.95rem;
+      padding: 0.35rem 0;
+    }
+
+    input::placeholder {
+      color: rgba(148, 163, 184, 0.85);
+    }
+  }
+
+  .glosario-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .glosario-chip {
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    background: rgba(15, 23, 42, 0.9);
+    color: rgba(226, 232, 240, 0.92);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, box-shadow 0.15s ease,
+      border-color 0.15s ease;
+
+    &.active {
+      background: rgba(130, 10, 209, 0.95);
+      border-color: rgba(248, 250, 252, 0.2);
+      color: #f9fafb;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    &:hover:not(.active) {
+      background: rgba(30, 64, 175, 0.45);
+      border-color: rgba(191, 219, 254, 0.8);
+    }
+  }
+
+  .glosario-count {
+    grid-column: 1 / -1;
+    margin: 0;
+    font-size: 0.85rem;
+    color: rgba(148, 163, 184, 0.9);
+
+    #glosarioCount {
+      font-weight: 700;
+      color: rgba(248, 250, 252, 0.98);
+    }
+  }
+
+  /* LISTA */
+  .glosario-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem 1.2rem;
+  }
+
+  .glosario-item {
+    background: rgba(15, 23, 42, 0.96);
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.55);
+    box-shadow:
+      0 4px 12px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(15, 23, 42, 0.9);
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    h3 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      color: rgba(248, 250, 252, 0.98);
+    }
+
+    .glosario-category {
+      margin: 0;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(148, 163, 184, 0.95);
+    }
+
+    .glosario-definition {
+      margin: 0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: rgba(226, 232, 240, 0.96);
+    }
+  }
+
+  .glosario-item.hidden {
+    display: none;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .glosario-controls {
+      grid-template-columns: 1fr;
+      align-items: stretch;
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1.5rem 2.5rem;
+
+    .glosario-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 1rem 2rem;
+
+    .glosario-intro {
+      font-size: 0.94rem;
+    }
+
+    .glosario-item {
+      padding: 0.9rem 1rem;
+    }
+
+    .glosario-item .glosario-definition {
+      font-size: 0.88rem;
+    }
+  }
+}

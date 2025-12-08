@@ -12,6 +12,12 @@ import { SetupComponent } from './showcases/setup/setup.component';
 import { CommonModule } from '@angular/common';
 import { PortadaComponent } from './showcases/portada/portada.component';
 import { IntroduccionComponent } from './showcases/introduccion/introduccion.component';
+import { RequisitosComponent } from './showcases/requisitos/requisitos.component';
+import { InstalacionComponent } from './showcases/instalacion/instalacion.component';
+import { SolucionComponent } from './showcases/solucion/solucion.component';
+import { MantenimientoComponent } from './showcases/mantenimiento/mantenimiento.component';
+import { SoporteComponent } from './showcases/soporte/soporte.component';
+import { GlosarioComponent } from './showcases/glosario/glosario.component';
 
 @Component({
   imports: [
@@ -25,6 +31,12 @@ import { IntroduccionComponent } from './showcases/introduccion/introduccion.com
     ShowcaseContainerComponent,
     PortadaComponent,
     IntroduccionComponent,
+    RequisitosComponent,
+    InstalacionComponent,
+    SolucionComponent,
+    MantenimientoComponent,
+    SoporteComponent,
+    GlosarioComponent,
   ],
   selector: 'showcase-root',
   templateUrl: './app.component.html',
