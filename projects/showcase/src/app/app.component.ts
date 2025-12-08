@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 import {
   NgxTourGuideComponent,
   NgxTourGuideService,
@@ -19,6 +19,7 @@ import { MantenimientoComponent } from './showcases/mantenimiento/mantenimiento.
 import { SoporteComponent } from './showcases/soporte/soporte.component';
 import { GlosarioComponent } from './showcases/glosario/glosario.component';
 import { ApendiceComponent } from './showcases/apendice/apendice.component';
+import { DescripcionComponent } from './showcases/descripcion/descripcion.component';
 
 @Component({
   imports: [
@@ -39,13 +40,14 @@ import { ApendiceComponent } from './showcases/apendice/apendice.component';
     SoporteComponent,
     GlosarioComponent,
     ApendiceComponent,
+    DescripcionComponent,
   ],
   selector: 'showcase-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   standalone: true,
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit{
   // 🔹 Título del manual
   title = 'Manual de usuario NU Bank';
 
@@ -75,7 +77,7 @@ export class AppComponent {
   sidebarOpen = true;
 
   constructor(public tourGuideService: NgxTourGuideService) {
-    // ⬇️ Tu registro original del tour, sin tocar
+    // 🔹 TOUR 1: Funciones / Flujo de inicio de sesión + depositar (EL ORIGINAL)
     tourGuideService.register(
       {
         stops: [
@@ -109,7 +111,6 @@ export class AppComponent {
             content:
               'Si el ingreso es exitoso, accederemos al menú principal de la aplicación, <br> en el cual podremos visualizar las diferentes opciones que Nu Bank nos ofrece.',
           },
-
           {
             element: '#setupImport2',
             title: 'Flujo depositar',
@@ -129,82 +130,6 @@ export class AppComponent {
             useHtml: true,
             content:
               'Si el ingreso es exitoso, accederemos al menú principal de la aplicación, <br> en el cual podremos visualizar las diferentes opciones que Nu Bank nos ofrece.',
-          },
-
-          {
-            element: '#registerTour',
-            title: 'Register a tour',
-            content:
-              'You can register tours from anywhere. This makes sense to split the code to respective modules (e.g. lazy loading).',
-          },
-          {
-            element: '#registerStart',
-            useHtml: true,
-            title: 'Start a registered Tour',
-            content:
-              'You can start a registered tour from anywhere. Make sure to prepare your appstate accordingly (e.g. opening the respective page)',
-          },
-          {
-            element: '#inlineHtml',
-            title: 'HtmlContent',
-            useHtml: true,
-            content: `You can use html content. Since this comes with several risks it is disabled by default and can be enabled with <strong>useHtml</strong><br>
-              Make sure to sanitize html from unsave sources`,
-          },
-          {
-            element: '#contentTemplateRef',
-            title: 'Template content',
-            content: `To maximize the customization capabilities use a TemplateRef.<br>
-              If needed you can pass any data as content to be used in your template.`,
-          },
-          {
-            element: '#contentTemplate',
-            title: 'Angular Template',
-            useHtml: true,
-            content:
-              'You can use <strong>stop.content</strong> as implicit template context',
-          },
-          {
-            element: '#customActionHtml',
-            title: 'Button content',
-            content: 'You can provide content for any action button.',
-          },
-          {
-            element: '#customActionTs',
-            title: 'Customize actions',
-            content:
-              "You can configure each of the tour's actions. As well as react to its execution.",
-          },
-          {
-            element: '#customActionReplace',
-            title: 'Replace actions',
-            content:
-              'If you wish to proceed your current step with other means. You can replace them with any element and event.',
-          },
-          {
-            element: '#customStops',
-            title: 'Hooks',
-            content:
-              'Each stop provides hooks on entering or leaving it, in case you wish to alter the state of your app.',
-          },
-          {
-            title: 'Customize css',
-            useHtml: true,
-            content: `You can fully customize css.<br>
-              <strong>.tour-guide--overlay</strong> for the overlay over your app<br>
-              <strong>.tour-guide--container</strong> for the content containers<br>
-              <strong>.tour-guide--stop</strong> for the layout of a stop<br>
-              <strong>.tour-guide--skip</strong> additonal class to differentiate the skip container if needed<br>
-              <strong>.tour-guide--stop.stop-title</strong> for the stop title<br>
-              <strong>.tour-guide--stop.stop-content</strong> for the stop content<br>
-              <strong>.tour-guide--stop.stop-counter</strong> for the current stop ident (1/7)<br>
-              `,
-          },
-          {
-            title: 'Thank you',
-            useHtml: true,
-            content: `Thank you for having a look at this little side project.<br>
-               Any feedback is welcome`,
           },
         ],
         actions: {
@@ -226,13 +151,122 @@ export class AppComponent {
           },
         },
       },
-      'demo'
+      'demo' // 👈 ID del tour original
     );
 
-    // ❌ Antes lo llamabas aquí:
-    // this.startTour();
-    // ✅ Ahora NO lo llamamos, para que el tour solo se inicie desde el botón.
+    // 🔹 TOUR 2: Descripción de la interfaz (NUEVO)
+    tourGuideService.register(
+      {
+        stops: [
+          {
+            title: 'Recorrido por la interfaz de Nu',
+            useHtml: true,
+            content:
+              'En este recorrido verás el <strong>panel principal</strong>, el <strong>menú de navegación</strong> y los <strong>botones de acción rápida</strong> de la app.',
+          },
+          {
+            element: '#interfazPanelPrincipal',
+            title: 'Panel principal',
+            useHtml: true,
+            content:
+              'Aquí ves el <strong>resumen de tu cuenta</strong>, tu saldo disponible y accesos rápidos a acciones como <em>Enviar</em>, <em>Depositar</em> o <em>Pagar</em>.',
+          },
+          {
+            element: '#interfazMenuNavegacion',
+            title: 'Menú de navegación',
+            useHtml: true,
+            content:
+              'Este menú te ayuda a moverte entre las secciones principales de la app y acceder rápidamente a <strong>inicio, movimientos, tarjetas y ayuda</strong>.',
+          },
+          {
+            element: '#interfazBotonesAccion',
+            title: 'Botones de acción rápida',
+            useHtml: true,
+            content:
+              'Desde estos botones puedes ejecutar acciones frecuentes, como <strong>regresar al menú principal</strong> o confirmar/cancelar un flujo.',
+          },
+        ],
+        actions: {
+          previousStop: {
+            label: 'back',
+            buttonClasses: ['ngx-tourguide--button'],
+          },
+          nextStop: {
+            label: 'next',
+            buttonClasses: ['ngx-tourguide--button'],
+          },
+          finishTour: {
+            label: 'finish',
+            buttonClasses: ['ngx-tourguide--button'],
+          },
+          skipTour: {
+            label: 'skip',
+            buttonClasses: ['ngx-tourguide--button'],
+          },
+        },
+      },
+      'interfaz' // 👈 ID del tour nuevo
+    );
+
+      // 🔹 TOUR 3: Portada / Menú (NUEVO)
+    tourGuideService.register(
+      {
+        stops: [
+          {
+            title: 'Bienvenido al manual de Nubank',
+            useHtml: true,
+            content:
+              'Este es el <strong>manual de usuario de la app Nubank</strong>. Desde aquí podrás recorrer todas las secciones: introducción, requisitos, instalación, funciones y más.',
+          },
+          {
+            element: '.sidebar',
+            title: 'Menú lateral del manual',
+            useHtml: true,
+            content:
+              'En este <strong>menú lateral</strong> encuentras todas las secciones del manual. Haz clic en cada sección para ver su contenido.',
+          },
+          {
+            element: '.sidebar-toggle--close',
+            title: 'Ocultar y volver a mostrar el menú',
+            useHtml: true,
+            content:
+              'Si quieres tener más espacio para leer, puedes <strong>cerrar el menú</strong> con este botón.<br>Cuando el menú esté oculto, verás un botón <strong>“☰ Menú”</strong> arriba a la izquierda para volver a abrirlo.',
+          },
+        ],
+        actions: {
+          previousStop: {
+            label: 'back',
+            buttonClasses: ['ngx-tourguide--button'],
+          },
+          nextStop: {
+            label: 'next',
+            buttonClasses: ['ngx-tourguide--button'],
+          },
+          finishTour: {
+            label: 'finish',
+            buttonClasses: ['ngx-tourguide--button'],
+          },
+          skipTour: {
+            label: 'skip',
+            buttonClasses: ['ngx-tourguide--button'],
+          },
+        },
+      },
+      'portada' // 👈 id del tour de portada
+    );
   }
+
+  ngAfterViewInit(): void {
+  // Aseguramos que arrancamos en la portada y con el sidebar visible
+  this.currentSection = 'portada';
+  this.sidebarOpen = true;
+
+  // Pequeño delay para que el DOM esté 100% listo
+  setTimeout(() => {
+    this.tourGuideService.start('portada'); // 👈 usamos el id del tour nuevo
+  }, 0);
+}
+
 
   // Cambiar de sección en el sidebar
   goToSection(id: string) {
@@ -247,10 +281,24 @@ export class AppComponent {
   }
 
   // Iniciar tour desde la sección "Funciones y características"
-  public startTour() {
-    // Nos aseguramos de que la sección de funciones esté visible
+  // Tour original (funciones / flujo de login + depositar)
+  public startFuncionesTour() {
     this.currentSection = 'funciones';
     this.sidebarOpen = true;
-    this.tourGuideService.start('demo');
+
+    setTimeout(() => {
+      this.tourGuideService.start('demo'); // 👈 usa el ID del tour original
+    }, 0);
   }
+
+  // Tour nuevo (descripción de la interfaz)
+  public startInterfazTour() {
+    this.currentSection = 'interfaz';
+    this.sidebarOpen = true;
+
+    setTimeout(() => {
+      this.tourGuideService.start('interfaz'); // 👈 usa el ID del tour nuevo
+    }, 0);
+  }
+
 }

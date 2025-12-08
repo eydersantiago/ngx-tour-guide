@@ -42,15 +42,13 @@
       ☰ Menú
     </button>
 
-    <ng-container [ngSwitch]="currentSection">
-      <!-- PORTADA -->
-      <div class="section portada">
-        <app-portada *ngSwitchCase="'portada'" ></app-portada>
-      </div>
+  <ng-container [ngSwitch]="currentSection">
+    <!-- PORTADA -->
+    <div *ngSwitchCase="'portada'" class="section portada">
+      <app-portada></app-portada>
+    </div>
 
-
-
-      <!-- ÍNDICE -->
+    <!-- ÍNDICE -->
     <div *ngSwitchCase="'indice'" class="section section--indice">
       <h1>Índice</h1>
       <ol>
@@ -62,83 +60,85 @@
       </ol>
     </div>
 
+    <!-- INTRODUCCIÓN -->
+    <div *ngSwitchCase="'introduccion'" class="section">
+      <app-introduccion></app-introduccion>
+    </div>
 
-      <!-- INTRODUCCIÓN -->
-      <div class="section">
-        <app-introduccion *ngSwitchCase="'introduccion'"></app-introduccion>
-      </div>
+    <!-- REQUISITOS DEL SISTEMA -->
+    <div *ngSwitchCase="'requisitos'" class="section">
+      <app-requisitos></app-requisitos>
+    </div>
 
-      <!-- REQUISITOS DEL SISTEMA -->
-      <div *ngSwitchCase="'requisitos'" class="section">
-        <app-requisitos></app-requisitos>
-      </div>
+    <!-- INSTALACIÓN / ACCESO -->
+    <div *ngSwitchCase="'instalacion'" class="section">
+      <app-instalacion></app-instalacion>
+    </div>
 
-      <!-- INSTALACIÓN / ACCESO -->
-      <div *ngSwitchCase="'instalacion'" class="section">
-        <app-instalacion></app-instalacion>
-      </div>
-
-      <!-- DESCRIPCIÓN DE LA INTERFAZ -->
-      <div *ngSwitchCase="'interfaz'" class="section">
+    <!-- DESCRIPCIÓN DE LA INTERFAZ -->
+    <div *ngSwitchCase="'interfaz'" class="section">
+      <nav>
         <h1>Descripción de la interfaz</h1>
-        <p>
-          Aquí puedes describir el dashboard, los menús, las tarjetas de
-          información y cualquier otro elemento visual importante.
+        <p class="section-subtitle">
+          Panel principal, menús de navegación y botones de acción rápida de la app.
         </p>
-        <p>
-          Más adelante puedes reemplazar este texto por capturas de pantalla
-          con anotaciones.
-        </p>
-      </div>
+        <button class="ngx-tourguide--button" (click)="startInterfazTour()">
+          Recorrido guiado por la interfaz
+        </button>
+      </nav>
 
-      <!-- FUNCIONES Y CARACTERÍSTICAS (TU CONTENIDO ORIGINAL) -->
-      <div *ngSwitchCase="'funciones'" class="section">
-        <nav>
-          <h1>Funciones principales</h1>
-          <button class="ngx-tourguide--button restart" (click)="startTour()">
-            Tomar un recorrido guiado
-          </button>
-        </nav>
+      <main>
+        <app-descripcion class="section"></app-descripcion>
+      </main>
+    </div>
 
-        <main>
-          <showcase-setup class="section"></showcase-setup>
-          <showcase-register class="section"></showcase-register>
-          <showcase-html-content class="section"></showcase-html-content>
-          <showcase-customize-actions class="section"></showcase-customize-actions>
-          <showcase-customize-stops class="section"></showcase-customize-stops>
-        </main>
-      </div>
 
-      <!-- FAQ -->
-      <div *ngSwitchCase="'faq'" class="section">
-        <app-solucion></app-solucion>
-      </div>
 
-      <!-- MANTENIMIENTO -->
-      <div *ngSwitchCase="'mantenimiento'" class="section">
-        <app-mantenimiento></app-mantenimiento>
-      </div>
+    <!-- FUNCIONES Y CARACTERÍSTICAS -->
+    <div *ngSwitchCase="'funciones'" class="section">
+      <nav class="section-header">
+        <h1>Funciones principales</h1>
+        <button class="tour-start-btn" (click)="startFuncionesTour()">
+          Tomar un recorrido guiado
+        </button>
+      </nav>
 
-      <!-- SOPORTE -->
-      <div *ngSwitchCase="'soporte'" class="section">
-        <app-soporte></app-soporte>
-      </div>
+      <main>
+        <showcase-setup class="section"></showcase-setup>
+      </main>
+    </div>
 
-      <!-- GLOSARIO -->
-      <div *ngSwitchCase="'glosario'" class="section">
-        <app-glosario></app-glosario>
-      </div>
+    <!-- FAQ -->
+    <div *ngSwitchCase="'faq'" class="section">
+      <app-solucion></app-solucion>
+    </div>
 
-      <!-- APÉNDICES -->
-      <div *ngSwitchCase="'apendices'" class="section">
-        <app-apendice></app-apendice>
-      </div>
+    <!-- MANTENIMIENTO -->
+    <div *ngSwitchCase="'mantenimiento'" class="section">
+      <app-mantenimiento></app-mantenimiento>
+    </div>
 
-      <!-- FALLBACK -->
-      <div *ngSwitchDefault class="section">
-        <p>Selecciona una sección en el menú de la izquierda.</p>
-      </div>
-    </ng-container>
+    <!-- SOPORTE -->
+    <div *ngSwitchCase="'soporte'" class="section">
+      <app-soporte></app-soporte>
+    </div>
+
+    <!-- GLOSARIO -->
+    <div *ngSwitchCase="'glosario'" class="section">
+      <app-glosario></app-glosario>
+    </div>
+
+    <!-- APÉNDICES -->
+    <div *ngSwitchCase="'apendices'" class="section">
+      <app-apendice></app-apendice>
+    </div>
+
+    <!-- FALLBACK -->
+    <div *ngSwitchDefault class="section">
+      <p>Selecciona una sección en el menú de la izquierda.</p>
+    </div>
+  </ng-container>
+
   </section>
 </div>
 
