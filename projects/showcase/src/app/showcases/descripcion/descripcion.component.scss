@@ -58,7 +58,8 @@
     grid-column: 1 / -1;
   }
 
-  @media (max-width: 1024px) {
+  /* ⬇⬇ Aquí cambiamos el corte de 1024px a 900px (ajusta a gusto) */
+  @media (max-width: 900px) {
     .interfaz-grid {
       grid-template-columns: 1fr;
     }
